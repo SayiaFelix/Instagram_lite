@@ -41,8 +41,6 @@ class ImageTestClass(TestCase):
         image = Image.get_images()
         self.assertTrue(len(image) == 1)
 
-
-
 class CommentTestClass(TestCase):
     def setUp(self):
         self.user = User.objects.create(id = 1, username='cherry')
