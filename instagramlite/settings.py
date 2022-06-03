@@ -18,8 +18,8 @@ ALLOWED_HOSTS = []
 
 
 # Application definition
-
 INSTALLED_APPS = [
+    'users',
     'tinymce',
     'instagramu',
     'bootstrap4',
