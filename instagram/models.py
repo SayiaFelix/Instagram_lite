@@ -49,7 +49,7 @@ class Profile(models.Model):
 
 class Image(models.Model):
     name = models.CharField(max_length = 60)
-    picture = models.ImageField(upload_to='images/',null = True)
+    image = models.ImageField(upload_to='images/',null = True)
     caption = HTMLField()
     posted = models.DateTimeField(auto_now_add=True)
     profile = models.ForeignKey(User, on_delete=models.CASCADE)
