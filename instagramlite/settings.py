@@ -21,7 +21,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'tinymce',
-    'instagram',
+    'instagramu',
     'bootstrap4',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -68,9 +68,9 @@ WSGI_APPLICATION = 'instagramlite.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'instagramu',
+        'NAME': 'instajayaa',
         'USER': 'moringa',
-        'PASSWORD': 'cherry',
+        'PASSWORD': 'lorajay',
     }
 }
 
