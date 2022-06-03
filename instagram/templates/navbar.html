@@ -1,19 +1,19 @@
-<nav class="navbar navbar-dark fixed-top mb-4" style="padding-top: 0; padding-bottom:0; background:#fff;">
+{% load bootstrap4 %}
+{% load static%}
+<nav class="navbar navbar-dark fixed-top " style="padding-top: 0; padding-bottom:0; background:#fff;">
     <div class="container">
-        <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="" style="color: #333;"><i style="font-size: 30px;"
-                class="fab fa-instagram fa-lg"></i> <span
-                id="insta"  >Instagram</span></a> 
+        <a class="navbar-brand col-sm-3 col-md-2" href="" style="color: #333;"><i style="font-size: 35px;"
+                class="fab fa-instagram fa-lg"></i><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" id="logo-name" class="img-fluid pl-3"> </a> 
                 <form action="" class="navbar-form" role="search">
                     {% csrf_token %}
-                    <div class="input-group">
-                        
+                    <div class="input-group">   
                         <input type="text" class="form-control" placeholder="Search " name="search">
+                          
                         <div class="input-group-btn">
                             <button class="btn btn-default" type="submit">
-                            
-                                 <i class="fa-regular fa-magnifying-glass"></i>
+                               <i class="fa-regular fa-magnifying-glass"></i>
                                  {% comment %} <span class="fa-regular fa-magnifying-glass" aria-hidden="true"></span> {% endcomment %}
-                                Search
+                                
                             </button>
                         </div>
                     </div>
