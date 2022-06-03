@@ -1,12 +1,13 @@
 from django.contrib import admin
-from django.urls import re_path as url,include
+from django.urls import path,include
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
-    url(r'', include('instagramu.urls')),
-    url(r'^tinymce/', include('tinymce.urls')),
-    url(r'users/', include('users.urls')),
-    url(r'users/', include('django.contrib.auth.urls')),
+    path('admin/', admin.site.urls),
+    path('', include('instagramu.urls')),
+    path('users/', include('users.urls')),
+    path('users/', include('django.contrib.auth.urls')),
+    # path(r'tinymce/', include('tinymce.urls')),
+   
 ]
 admin.site.site_header= "Instagram Lite Administration"
 admin.site.site_title="Instagram"

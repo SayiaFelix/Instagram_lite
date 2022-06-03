@@ -21,8 +21,11 @@
             <div class="">
 
             <ul class="navbar-nav ml-auto">
+                {% comment %} <li class="nav-item">
+                    <a class="nav-link text-light" href="">Login</a>
+                </li> {% endcomment %}
                 <li class="nav-item">
-                    <a class="nav-link open-nav" href="" data-toggle="tooltip" data-placement="bottom" title="Upload Image">
+                    <a class="nav-link open-nav" href="{%url 'login'%}" data-toggle="tooltip" data-placement="bottom" title="Upload Image">
                         <i class="fas fa-cloud-upload-alt "></i>
                     </a>
                 </li>
@@ -47,7 +50,7 @@
                     </a>
                 </li>
                  <li class="nav-item">
-                    <a class="nav-link open-nav" href="/logout" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                    <a class="nav-link open-nav" href="{% url 'logout'%}" data-toggle="tooltip" data-placement="bottom" title="Logout">
                       <i class="fas fa-sign-out-alt "></i>
                     </a>
                 </li>
