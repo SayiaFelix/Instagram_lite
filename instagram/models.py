@@ -9,7 +9,7 @@ from django.dispatch import receiver
 # Create your models here.
 class Profile(models.Model):
     bio = HTMLField()
-    photo = models.ImageField(upload_to='images/', null=True)
+    photo = models.ImageField(upload_to='photo/', null=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE, primary_key=True)
 
     @receiver(post_save, sender=User)
@@ -95,13 +95,11 @@ class Image(models.Model):
         likes = self.likes.count()
         return likes
 
-
     def __str__(self):
         return self.name
 
     class Meta:
         ordering = ['posted']
-
 
 class Likes(models.Model):
     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='likes')
@@ -112,12 +110,10 @@ class Likes(models.Model):
 
     def unlike_like(self):
         self.delete()
-
-
-    
+ 
 class Comments(models.Model):
     comment = models.CharField(max_length = 300)
-    posted_on = models.DateTimeField(auto_now=True)
+    posted = models.DateTimeField(auto_now=True)
     image = models.ForeignKey(Image, on_delete=models.CASCADE, related_name='comments')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
@@ -132,3 +128,16 @@ class Comments(models.Model):
         comments = Comments.objects.filter(image__pk = id)
         return comments
 
+class Follow(models.Model):
+    users=models.ManyToManyField(User,related_name='follow')
+    current_user=models.ForeignKey(User,related_name='c_user',on_delete=models.SET_NULL,null=True)
+
+    @classmethod
+    def follow(cls,current_user,new):
+        friends,created=cls.objects.get_or_create(current_user=current_user)
+        friends.users.add(new)
+
+    @classmethod
+    def unfollow(cls,current_user,new):
+        friends,created=cls.objects.get_or_create(current_user=current_user)
+        friends.users.remove(new)
