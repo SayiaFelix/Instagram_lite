@@ -5,3 +5,6 @@ urlpatterns = [
     url('admin/', admin.site.urls),
     url(r'', include('instagram.urls')),
 ]
+admin.site.site_header= "Instagram Lite Administration"
+admin.site.site_title="Instagram"
+admin.site.index_title="Welcome to Instagram administration"
