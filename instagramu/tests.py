@@ -3,7 +3,7 @@ from .models import *
 
 # Create your tests here.
 
-class ProfileTest(TestCase):
+class ProfileTestClass(TestCase):
 
     def setUp(self):
         self.user = User.objects.create(id = 1, username='cherry')
@@ -25,7 +25,7 @@ class ProfileTest(TestCase):
         profile = Profile.find_profile('cherry')
         self.assertTrue(len(profile) > 0)
 
-class ImageTest(TestCase):
+class ImageTestClass(TestCase):
 
     def setUp(self):
         self.user = User.objects.create(id = 1, username='cherry')
@@ -43,7 +43,7 @@ class ImageTest(TestCase):
 
 
 
-class CommentTest(TestCase):
+class CommentTestClass(TestCase):
     def setUp(self):
         self.user = User.objects.create(id = 1, username='cherry')
 
@@ -59,4 +59,4 @@ class CommentTest(TestCase):
         self.comment.save()
         comment = Comment.get_comment()
         self.assertTrue(len(comment) == 1)
-# Create your tests here.
+
