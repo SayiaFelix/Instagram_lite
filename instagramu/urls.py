@@ -8,7 +8,8 @@ from django.conf.urls.static import static
 
 urlpatterns=[
     url('^$',views.homepage, name='homepage'),
-    url(r'^like/(?P<operation>.+)/(?P<pk>\d+)',views.like, name='like'),
+    url('like/(?P<operation>.+)/(?P<pk>\d+)',views.like, name='like'),
+    url('profile/(\d+)', views.user_profile, name='profile'),
     # url(r'^search/', views.search_results, name='search_results'),
  
 ]

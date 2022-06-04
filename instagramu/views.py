@@ -35,9 +35,14 @@ def homepage(request):
 
     return render(request,"insta/homepage.html",{"Images":Images, "comments":comments,"form": form,"profile":profile})
 
+def user_profile(request,profile_id):
+    profile = Profile.objects.get(pk = profile_id)
+    Images = Image.objects.filter(profile_id=profile).all()
+
+    return render(request,"insta/profile.html",{"profile":profile,"Images":Images})
+
 def like(request,operation,pk):
     image = get_object_or_404(Image,pk=pk)
-    
     if operation == 'like':
         image.likes += 1
         image.save()
@@ -45,3 +50,5 @@ def like(request,operation,pk):
         image.likes -= 1
         image.save()
     return redirect('homepage')
+
+
