@@ -79,3 +79,18 @@ def search_results(request):
     else:
         message = "You haven't searched for any username"
         return render(request,'insta/search.html',{"message":message})
+
+def user_comments(request,pk):
+    image = get_object_or_404(Image, pk=pk)
+    current_user = request.user
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.image = image
+            comment.poster = current_user
+            comment.save()
+            return redirect('homepage')
+    else:
+        form = CommentForm()
+        return render(request,'insta/comment.html',{"user":current_user,"comment_form":form})
