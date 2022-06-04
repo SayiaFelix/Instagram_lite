@@ -28,9 +28,20 @@ def homepage(request):
             comment = form.save(commit=False)
             comment.user = current_user
             comment.save()
-        return redirect('home')
+        return redirect('homepage')
 
     else:
         form = CommentForm()
 
     return render(request,"insta/homepage.html",{"Images":Images, "comments":comments,"form": form,"profile":profile})
+
+def like(request,operation,pk):
+    image = get_object_or_404(Image,pk=pk)
+    
+    if operation == 'like':
+        image.likes += 1
+        image.save()
+    elif operation =='unlike':
+        image.likes -= 1
+        image.save()
+    return redirect('homepage')
