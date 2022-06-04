@@ -5,7 +5,7 @@ from instagramu import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('register/',user_views.register,name='register'),
+    # path('register/',user_views.register,name='register'),
     path('', include('instagramu.urls')),
     path('register/',views.register_user,name='register'),
     path('login/',views.login_user,name='login'),
