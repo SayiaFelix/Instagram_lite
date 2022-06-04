@@ -1,53 +1,52 @@
-{% extends 'insta/base.html' %}
+{% extends 'registration/base.html' %}
 {% load bootstrap4 %}
 
 {% block content %}
-{% comment %} <div class="container">
+<div class="container">
     <div class="row mt-5">
         <div class="col-md-4 mx-auto">
             {% if form.errors %}
             <p>Password or username is incorrect</p>
             {% endif %}
             <div class="section">
-                <div class="logo mb-5 mt-3">
+                <div class="logo mb-3 mt-1">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/2000px-Instagram_logo.svg.png" alt="" class="img-fluid">
                 </div>
                 <div class="form-section" id="login">
-                    <form action="/accounts/login/" method="POST">
-                        {% csrf_token %}
-                        {% bootstrap_form form %}
-                        <div class="form-group">
-                            <input type="submit" class="btn btn-primary btn-sm login" value="Log In">
-                        </div>
-                        <input type="hidden" name="next" value="/">
-                    </form>
+                    <hr class="text-dark" > 
+                         {%if messages%}
+                         {%for message in messages%}
+                            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                            {{message}}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                          {%endfor%}
+                         {%endif%}
+                                
+            <form action="{% url 'login'%}" method="POST">
+                    {%csrf_token%}
+                <div class="mb-3">
+                    <label for="exampleInputEmail1" class="form-label">Username</label>
+                    <input type="text" class="form-control" name="username" aria-describedby="">
                 </div>
-                <p class="text-center"><a href="#">Forgot password?</a></p>
-            </div>
-            <div class="section">
-                <p class="text-center mt-2">Don't have an account?<a href="/signup/"> Sign Up</a></p>
-            </div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <input type="password" class="form-control" name="password">
+                </div>
+                <div class="checkbox mb-3">
+                    <label>
+                        <input type="checkbox" value="remember-me"> Remember me
+                    </label>
+                </div>
+                <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Sign in</button>
+                <p class="mt-3">Don't have an account? <a href="{%url 'register'%}">Sign Up</a></p>
+                <hr>
+                <p class="mt-5 mb-3 text-muted text-center">Instagram Lite &copy; 2022</p>
+            </form>
         </div>
     </div>
-</div> {% endcomment %}
+</div> 
 
 
-<form class="form-signin" style="margin-top: 100;" method="POST">
-    {% csrf_token %}
-    <h1 class="mb-4"><span id="insta" style="padding-bottom: 20px;">Instagram</span></h1>
-    <h1 class="h6 mb-3 font-weight-normal text-muted">Please sign in</h1>
-    <label for="inputEmail" class="sr-only">Username</label>
-    <input type="text" name="username" class="form-control" placeholder="Username" required autofocus>
-    <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" name="password" class="form-control" placeholder="Password" required>
-    <div class="checkbox mb-3">
-        <label>
-            <input type="checkbox" value="remember-me"> Remember me
-        </label>
-    </div>
-    <button class="btn btn-lg btn-outline-dark btn-block" type="submit">Sign in</button>
-    <p class="mt-3">Don't have an account? <a href="{%url 'register'%}">Sign Up</a></p>
-    <p class="mt-5 mb-3 text-muted">&copy; 2020</p>
-</form>
 
 {% endblock %}

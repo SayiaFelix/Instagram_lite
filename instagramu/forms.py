@@ -32,7 +32,6 @@ class SignupForm(UserCreationForm):
         fields = ('username', 'email', 'password1', 'password2')
 
 class UserForm(forms.ModelForm):
- 
     username = forms.CharField()
     email = forms.CharField()
     password1 = forms.CharField()
@@ -42,13 +41,13 @@ class UserForm(forms.ModelForm):
         model = User
         fields = ("username", "email", "password1","password2",)
 
-        # labels={
+        labels={
 
-        #   'username' : '',
-        #   'email' :'',
-        #   'password1' : '',
-        #   'password2' :'',  
-        # }
+          'username' : '',
+          'email' :'',
+          'password1' : '',
+          'password2' :'',  
+        }
 
         widgets = {
            'username' : forms.TextInput(attrs={'class': 'form-control','placeholder':'Username'}),
