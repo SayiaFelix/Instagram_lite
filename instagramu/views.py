@@ -39,7 +39,7 @@ def user_profile(request,profile_id):
     profile = Profile.objects.get(pk = profile_id)
     Images = Image.objects.filter(profile_id=profile).all()
 
-    return render(request,"insta/profile.html",{"profile":profile,"Images":Images})
+    return render(request,"profile/profile.html",{"profile":profile,"Images":Images})
 
 def like(request,operation,pk):
     image = get_object_or_404(Image,pk=pk)
@@ -64,7 +64,7 @@ def add_user_profile(request):
 
     else:
         form = NewProfileForm()
-    return render(request, 'insta/new_user_profile.html', {"form": form})
+    return render(request, 'profile/new_user_profile.html', {"form": form})
 
 
 def search_results(request):
@@ -104,3 +104,20 @@ def follow(request,operation,id):
     elif operation=='unfollow':
         Follow.unfollow(request.user,current_user)
         return redirect('homepage')
+    
+def upload_image(request):
+    current_user = request.user
+    profiles = Profile.get_profile()
+    for profile in profiles:
+        if profile.user.id == current_user.id:
+            if request.method == 'POST':
+                form = UploadForm(request.POST,request.FILES)
+                if form.is_valid():
+                    upload = form.save(commit=False)
+                    upload.posted_by = current_user
+                    upload.profile = profile
+                    upload.save()
+                    return redirect('homepage')
+            else:
+                form = UploadForm()
+            return render(request,'insta/upload.html',{"user":current_user,"form":form})

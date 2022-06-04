@@ -17,6 +17,13 @@ class CommentForm(forms.ModelForm):
         model = Comment
         exclude =['poster','image']
 
+        labels={
+          'comment' : '',   
+        }
+        widgets = {
+           'comment' : forms.TextInput(attrs={'class': 'form-control','placeholder':'Add a comment...'}),
+        }
+
 class SignupForm(UserCreationForm):
     email = forms.EmailField(max_length=200, help_text='Required')
     class Meta:

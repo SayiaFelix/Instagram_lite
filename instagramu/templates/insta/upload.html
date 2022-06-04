@@ -1,0 +1,25 @@
+{%extends 'insta/base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+
+<hr>
+<br>
+
+<div class="container-fluid">
+  <div class="row">
+          <div class="col-md-8 mx-auto">
+              <div class="form-section" id="upload">
+                  {{message}}
+                  <form action="{% url 'upload_image' %}" method="POST" enctype="multipart/form-data">
+                      {% csrf_token %}
+                      {% bootstrap_form form %}
+                      <input type="submit" class="btn btn-outline-primary btn-lg" value="Upload">
+                  </form>
+              </div>
+          </div>
+  </div>
+</div> 
+<br>
+<hr>
+{% endblock %}
