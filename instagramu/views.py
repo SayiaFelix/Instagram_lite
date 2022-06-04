@@ -10,8 +10,9 @@ from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
 from django.template.loader import render_to_string
 from .tokens import account_activation_token
 from django.contrib.auth.models import User
-from django.core.mail import EmailMessage
-
+from django.urls import reverse
+from django.core.mail import send_mail
+from django.contrib.auth import authenticate, login, logout
 # Create your views here.
 # def homepage(request):
 #     return render(request, 'insta/homepage.html')
@@ -121,3 +122,56 @@ def upload_image(request):
             else:
                 form = UploadForm()
             return render(request,'insta/upload.html',{"user":current_user,"form":form})
+
+
+def login_user(request):  
+    if request.method == "POST":
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+
+        user = authenticate(username=username, password=password)
+
+        if user:
+            if user.is_active:
+                login(request, user)
+
+                return HttpResponseRedirect(reverse("homepage"))
+            else:
+                return HttpResponseRedirect(reverse("login"))
+
+        else:
+            return HttpResponseRedirect(reverse("login")) 
+    else:
+        return render(request, "registration/login.html", context={})
+
+
+@login_required
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("login"))
+
+
+def register_user(request):
+    registered = False
+    if request.method == "POST":
+        user_form = UserForm(request.POST)
+        
+        if user_form.is_valid():
+            user = user_form.save()
+            user.set_password(user.password)
+            user.save()
+
+            user_profile = Profile()
+            user_profile.user = user
+            user_profile.save()
+            registered = True
+
+            return HttpResponseRedirect(reverse("login"))
+
+        else:
+            pass
+
+    else:
+        user_form = UserForm()
+        
+    return render(request, "registration/register.html", context={"user_form":user_form,"registered":registered})
