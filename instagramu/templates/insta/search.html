@@ -2,25 +2,29 @@
 {% block content %}
 {{ block.super}}
 {% load bootstrap4 %}
-{% comment %} <script src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script> {% endcomment %}
-<div class="container mt-5">
-    <div class="row mt-5"></div>
-    <div class="row mt-5"></div>
-    <div class="row mt-5">
+<hr>
+<div class="container">
+    <div class="row">
         {% if username %}
-        <h2>{{username | length}} user found</h2>
+        <h3 class="text-center">Found {{username | length}} user by the name <b>{{message | title}}</b>.</h3>
+        <hr>
         {% else %}
-        <h2>Found 0 users for the searched name {{message | title}}</h2>
+        <h2 class="text-center">Found 0 users for the searched name {{message | title}}</h2>
         {% endif %}
     </div>
     <div class="row">
         {% if username %}
-            {% for user in username %}
-            <div class="card border-secondary">
-              <img class="card-img-top" class="img-responsive" src="{{user.photo.url}}" size="100px200">
-            </div>
+        {% for user in username %}
+        <div class="card border-secondary">
+            <br>
+            <h1 class="text-center">  {{user.user}}</h1>
+            <hr>
+            <img class="card-img-top" class="img-responsive" src="{{user.photo.url}}" 
+         </div>
             {% endfor %}
         {% endif %}
     </div>
 </div>
+<br>
+<hr>
 {% endblock %}
