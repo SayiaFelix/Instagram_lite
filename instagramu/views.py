@@ -143,6 +143,22 @@ def login_user(request):
     else:
         return render(request, "registration/login.html",)
 
+# def login_user(request):
+#     if request.method == 'POST':
+#         username = request.POST['username']
+#         password = request.POST['password']
+#         user = authenticate(request, username=username, password=password)
+#         if user is not None:
+#          login(request, user)
+#          return redirect('homepage')
+        
+#         else:
+#             messages.success(request,('Invalid information'))
+#             return redirect('login')
+         
+#     else:
+
+#      return render(request,'registration/login.html')
 
 @login_required
 def logout_user(request):
@@ -150,27 +166,41 @@ def logout_user(request):
     return HttpResponseRedirect(reverse("login"))
 
 
+# def register_user(request):
+#     registered = False
+#     if request.method == "POST":
+#         user_form = UserForm(request.POST)
+        
+#         if user_form.is_valid():
+#             user = user_form.save()
+#             user.set_password(user.password)
+#             user.save()
+
+#             user_profile = Profile()
+#             user_profile.user = user
+#             user_profile.save()
+#             registered = True
+
+#             return HttpResponseRedirect(reverse("login"))
+
+#         else:
+#             pass
+
+#     else:
+#         user_form = UserForm()
+        
+#     return render(request, "registration/register.html", context={"user_form":form,"registered":registered})
+
 def register_user(request):
-    registered = False
-    if request.method == "POST":
-        user_form = UserForm(request.POST)
-        
-        if user_form.is_valid():
-            user = user_form.save()
-            user.set_password(user.password)
-            user.save()
-
-            user_profile = Profile()
-            user_profile.user = user
-            user_profile.save()
-            registered = True
-
-            return HttpResponseRedirect(reverse("login"))
-
-        else:
-            pass
-
+    if request.method == 'POST':
+         form = UserRegisterForm(request.POST)
+         if form.is_valid():
+             user= form.save()
+             user.set_password(user.password)
+             user.save()
+             username = form.cleaned_data.get('username')
+             messages.success(request,f'Account for {username},  was successfully created!!')
+             return redirect('login')
     else:
-        user_form = UserForm()
-        
-    return render(request, "registration/register.html", context={"user_form":user_form,"registered":registered})
+         form = UserRegisterForm()
+    return render (request,'registration/register.html',{'form':form})

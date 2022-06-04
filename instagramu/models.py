@@ -35,8 +35,8 @@ class Image(models.Model):
 
     @classmethod
     def get_images(cls):
-        images = Image.objects.all()
-        return images
+        Images = Image.objects.all()[::-1]
+        return Images
 
     def __str__(self):
        return str(self.caption)
