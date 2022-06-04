@@ -17,6 +17,7 @@ from django.contrib.auth import authenticate, login, logout
 # def homepage(request):
 #     return render(request, 'insta/homepage.html')
 
+@login_required
 def homepage(request):
     Images = Image.get_images()
     comments = Comment.get_comment()
@@ -36,6 +37,7 @@ def homepage(request):
 
     return render(request,"insta/homepage.html",{"Images":Images, "comments":comments,"form": form,"profile":profile})
 
+@login_required
 def user_profile(request,profile_id):
     profile = Profile.objects.get(pk = profile_id)
     Images = Image.objects.filter(profile_id=profile).all()
@@ -52,7 +54,7 @@ def like(request,operation,pk):
         image.save()
     return redirect('homepage')
 
-
+@login_required
 def add_user_profile(request):
     current_user = request.user
     if request.method == 'POST':
@@ -67,7 +69,7 @@ def add_user_profile(request):
         form = NewProfileForm()
     return render(request, 'profile/new_user_profile.html', {"form": form})
 
-
+@login_required
 def search_results(request):
     current_user = request.user
     profile = Profile.get_profile()
@@ -80,7 +82,7 @@ def search_results(request):
     else:
         message = "You haven't searched for any username"
         return render(request,'insta/search.html',{"message":message})
-
+@login_required
 def user_comments(request,pk):
     image = get_object_or_404(Image, pk=pk)
     current_user = request.user
@@ -105,7 +107,7 @@ def follow(request,operation,id):
     elif operation=='unfollow':
         Follow.unfollow(request.user,current_user)
         return redirect('homepage')
-    
+@login_required  
 def upload_image(request):
     current_user = request.user
     profiles = Profile.get_profile()

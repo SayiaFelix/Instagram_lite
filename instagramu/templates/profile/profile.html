@@ -45,9 +45,9 @@
             </li>
           </ul>
           {% comment %} <p class="font3">{{profile.bio}}</p> {% endcomment %}
-          {% comment %} {% if profile.user == user %}
-          <p><a href="{% url 'upload' %}">Add Image</a></p>
-          {% endif %} {% endcomment %}
+         {% if profile.user == user %}
+          <p style="text-decoration:none"><a href="{% url 'upload_image' %}">Upload Profile Photo</a></p>
+          {% endif %}
         </div>
       </div>
     </div>
@@ -55,12 +55,12 @@
   <hr>
   <div class="container">
     <div class="row">
+       <h2 class="text-center">Posts </h2> <hr><br><p>Posted by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
       {% for image in Images %}
-      <h2 class="text-center">Posts </h2>
       <div class="col-md-4">
-        <img src="{{image.image.url}}" alt="Image" style="height:530px;width:300px;">
+        <img src="{{image.image.url}}" alt="Image" style="height:500px;width:320px;">
       </div>
-        <p>Posts by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
+        
       {% empty %}
       <div class="col-md-12">
         <h2>   Profile has no uploaded Posts </h2>

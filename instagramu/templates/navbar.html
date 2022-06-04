@@ -1,7 +1,7 @@
 {% load bootstrap4 %}
 {% load static%}
 {{ form.media }}
-<nav class="navbar navbar-expand-lg navbar-light" style="padding-top: 0; padding-bottom:0; background:#fff;">
+<nav class="navbar navbar-expand-lg navbar-light" style="padding-top: 0; padding-bottom:0; background:#FAFAFA;">
     <div class="container">
         <a class="smooth-scroll nav-link col-3 mr-1" href="/homepage" style="font-size: 35px"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2a/Instagram_logo.svg/130px-Instagram_logo.svg.png" id="logo-name" class="img-fluid pl-3"></a>
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
@@ -12,7 +12,7 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4 mx-auto">
-                     <form class="form-inline mx-auto my-lg-0" role="search" action="{% url 'search_results' %}" method="get">
+                     <form class="form-inline mx-auto my-lg-0" role="search" style="background-color: #EBEBEB"  action="{% url 'search_results' %}" method="get">
                            {% csrf_token %}
                              <div class="form-group">
                                 <input type="text" class="form-control" role="search" placeholder="Search" aria-label="Search" name="username">
@@ -69,7 +69,7 @@
         <div class="modal-content">
             <div class="modal-body">
                 <ul class="list-group">
-                <li class="list-group-item text-center"><a href="/accounts/password/change">Change Password</a></i></li>
+                <li class="list-group-item text-center"><a href="#">Change Password</a></i></li>
                 <li class="list-group-item text-center"><a href="/logout/">Log Out</a></li>
                 <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
                 </ul>
