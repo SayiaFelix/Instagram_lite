@@ -15,7 +15,6 @@
                         <h5 class="card-title" style="padding-top: 10px; margin-left:20px;">{{image.profile.user}}
                         </h5>
                     </a>
-            {% comment %} <a href="/profile/{{user.id}}"><label>   {{image.profile.user}}  {{image.posted|date:"d, F Y"}}</label></a> {% endcomment %}
         </div>
         <img src="{{image.image.url}}" class="card-img-top" data-target="#extraModal{{image.id}}" data-toggle="modal">
         
@@ -30,12 +29,12 @@
             {% if image.likes >= 1 %}
             <label>{{image.likes}} Likes</label>
             {% endif %}
-            {% comment %} <p><strong>{{image.posted}} </strong>{{image.caption}}</p> {% endcomment %}
             {% for comment in comments %}
              {% if image.id == comment.image.id %}
              <p><b>{{comment.poster}}</b>  {{comment.comment}}</p> 
              {% endif %}
             {%endfor%} 
+            <h6 class="text-muted fw-ligh">{{image.posted|timesince}}  Ago</h6>
             <form action="{%url 'comment' pk=image.id%}" method="post" enctype="multipart/form-data" id="comment">
               {%csrf_token%}
               {% bootstrap_form form%}
@@ -72,7 +71,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"> Posted On: {{image.posted}}</h5>
+        <h5 class="modal-title" id="exampleModalLongTitle"> Posted On:  {{image.posted|date:"D, d M Y" }}</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </div>
@@ -80,7 +79,7 @@
         <img class="card-img-top" class="img-responsive" src="{{image.image.url}}" data-target="#extraModal{{image.id}}" data-toggle="modal" size="80px200">
         <br>
         <hr>
-        <p>Caption: {{image.caption}}</p>
+        <h6> Caption: {{image.caption}}</h6>
         <label>{{image.likes}} Likes</label>
         <div class="modal-footer">
           <button type="button" class="btn btn-outline-btn-secondary" data-dismiss="modal">Close</button>
