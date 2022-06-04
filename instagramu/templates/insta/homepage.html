@@ -9,9 +9,13 @@
     <div class="col-9" style="max-width:45rem; margin-top:10px;">
       {% for image in Images %}
       <div class="card mr-0" style="max-width:40rem;">
-        <div class="card-header">
+        <div class="card-header" style="display: flex;">
            <img class="img-fluid rounded-circle" src="{{image.profile.photo.url}}" style="height:40px;margin-top:5px;margin-bottom:5px;">
-            <a href="/profile/{{user.id}}"><label>{{image.posted|date:"d, F Y"}}</label></a>
+              <a href="" style="color: black; text-decoration: none;">
+                        <h5 class="card-title" style="padding-top: 10px; margin-left:20px;">{{image.profile.user}}
+                        </h5>
+                    </a>
+            {% comment %} <a href="/profile/{{user.id}}"><label>   {{image.profile.user}}  {{image.posted|date:"d, F Y"}}</label></a> {% endcomment %}
         </div>
         <img src="{{image.image.url}}" class="card-img-top" data-target="#extraModal{{image.id}}" data-toggle="modal">
 
