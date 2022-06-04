@@ -138,7 +138,7 @@ def login_user(request):
                 return HttpResponseRedirect(reverse("login"))
 
         else:
-            messages.success(request,('You information is not valid'))
+            messages.success(request,('Invalid Information,Try Again!!'))
             return HttpResponseRedirect(reverse("login")) 
     else:
         return render(request, "registration/login.html",)
