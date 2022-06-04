@@ -17,7 +17,7 @@
 
         <div class="card-body">
           <div class="header">
-            <a id="like" href="{% url 'like' operation='like' pk=image.id%}"><i class="far fa-heart" style="margin-right:10px;color:black;"></i></a>
+            <a id="like" href="{% url 'like' operation='like' pk=image.id%}"><i class="far fa-heart" style="margin-right:10px;color:red;"></i></a>
             <a href="#" style="color:black;"><i class="far fa-comment"></i></a>
             <a href="/upload"><i class="far fa-arrow-alt-circle-up" style="margin-right:15px;color:black;"></i></a>
           </div>
@@ -30,9 +30,10 @@
             <p><strong>{{image.posted}} </strong>{{image.caption}}</p>
             {% for comment in comments %}
              {% if image.id == comment.image.id %}
-            <p><strong>{{comment.poster}}</strong> {{comment.comment}}</p>
+             <br>
+            <p><strong>{{comment.poster}}</strong>{{comment.comment}}</p>
              {% endif %}
-            {%endfor%}
+            {%endfor%} 
             {{form.media}}
             {% comment %} <form action="{%url 'comment' pk=image.id%}" method="post" enctype="multipart/form-data" id="sema">
               {%csrf_token%}
