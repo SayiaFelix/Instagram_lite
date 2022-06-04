@@ -96,7 +96,7 @@ def user_comments(request,pk):
             return redirect('homepage')
     else:
         form = CommentForm()
-        return render(request,'insta/comment.html',{"user":current_user,"comment_form":form})
+        return render(request,{"user":current_user,"comment_form":form})
 
 
 def follow(request,operation,id):
