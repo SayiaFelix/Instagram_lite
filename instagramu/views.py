@@ -67,3 +67,15 @@ def add_user_profile(request):
     return render(request, 'insta/new_user_profile.html', {"form": form})
 
 
+def search_results(request):
+    current_user = request.user
+    profile = Profile.get_profile()
+    if 'username' in request.GET and request.GET["username"]:
+        search_term = request.GET.get("username")
+        searched_name = Profile.find_profile(search_term)
+        message = search_term
+
+        return render(request,'insta/search.html',{"message":message,"profiles":profile,"user":current_user,"username":searched_name})
+    else:
+        message = "You haven't searched for any username"
+        return render(request,'insta/search.html',{"message":message})
