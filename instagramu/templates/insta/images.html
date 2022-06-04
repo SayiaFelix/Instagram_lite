@@ -1,0 +1,38 @@
+{% comment %} {%extends 'insta/base.html'%}
+{% block content %}
+{{ block.super}}
+{% load bootstrap4 %}
+<hr>
+<div class="container">
+    <h2 class=""> {{profile.user}} Profile</h2>
+    <hr>
+    <div class="row">
+        <div class="col-md-1"></div>
+      <div class="col-md-4">
+        <img src="{{profile.photo.url}}" alt="profile-photo" class="img-fluid-circle" style="border-radius: 50%;height:250px;width: 250px;">
+      </div>
+      <div class="col-md-5 text-left">
+        <br>
+        <h2 class="font">{{profile.user}}</h2>
+        <hr>
+        <ul class="list-inline">
+          <li class="list-inline-item">
+            <span class="font-weight-bold">{{Images|length}}</span> Posts
+          </li>
+          <li class="list-inline-item">
+            <span class="font-weight-bold">{{profile.user.follow.all | length}}</span> Followers
+          </li>
+          <li class="list-inline-item">
+            <span class="font-weight-bold">{{profile.user.c_user.all | length}}</span> Following
+          </li><br><br>
+          <li class="list-inline-item">
+            <a href="#" class="btn btn-secondary">Follow</a>
+          </li>
+        </ul>
+         <p>Posts by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
+      </div>
+    </div>
+  </div>
+</div>
+<hr>
+{% endblock %} {% endcomment %}

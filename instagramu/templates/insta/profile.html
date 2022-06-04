@@ -4,6 +4,8 @@
 {% load bootstrap4 %}
 <hr>
 <div class="container top">
+  <h2 class="">{{ profile.user }} Profile</h2>
+  <hr>
   <div class="row">
     <div class="col-md-12">
       <div class="row">
@@ -58,6 +60,7 @@
       <div class="col-md-4">
         <img src="{{image.image.url}}" alt="Image" style="height:530px;width:300px;">
       </div>
+        <p>Posts by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
       {% empty %}
       <div class="col-md-12">
         <h2>   Profile has no uploaded Posts </h2>

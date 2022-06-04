@@ -50,31 +50,20 @@
     </div>
     <div class="col-2 stories" style="max-width:20rem; margin-top:20px;">
       <div class="" style="position:fixed; width:350px">
+          <hr>
           <header style="margin-bottom:30px;margin-top:20px;">
             {% for profile in profile %}
               {% if profile.user == user %}
                <img class="mb-1" src="{{profile.photo.url}}" alt="" style="height:52px;width:52px; border-radius:50%; float:left; margin-right:10px">
-              <p style="font-size:20px; align:center;">{{profile.user}}</p>
+              <h2 style="font-size:20px; align:center;">{{profile.user}}</h2>
+              <div class="user_stories" style="margin-bottom:15px">
+                    <a href="/follow/follow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{follow}}follow</a>
+                    <a href="/follow/unfollow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{unfollow}}unfollow</a>
+              </div>
               {% endif %}
             {% endfor %}
           </header>
         <hr>
-        <p style="float:left; font-size:15px; font-weight:bolder; color:grey">Stories</p>
-        <p style="float:right; font-weight:bolder; font-size:15px"><a style="color:grey" href="">View More</a></p>
-        <div class="all" style="overflow-y:auto; height:400px;margin-top:50px;padding:10px; border-bottom: 1px solid ; width:100%">
-          <hr>
-          {% for profile in profile %}
-            {% if profile.user != user %}
-              <div class="user_stories" style="margin-bottom:15px">
-                <img src="{{profile.photo.url}}" alt="" style="height:52px;width:52px; border-radius:50%; border-color: red; float:left; margin-right:15px">
-                <a href="{% url 'all' pk=profile.pk %}">
-                  <p style="font-size:16px">{{profile.user}}<br>
-                    <a href="/follow/follow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{follow}}follow</a>
-                    <a href="/follow/unfollow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{unfollow}}unfollow</a>
-              </div>
-            {% endif %}
-          {% endfor %}
-        </div>
       </div>
     </div>
   </div>

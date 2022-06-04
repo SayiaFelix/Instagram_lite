@@ -13,6 +13,8 @@ urlpatterns=[
     url('new/profile', views.add_user_profile, name='add_profile'),
     url('search/', views.search_results, name='search_results'),
     url('comment/(?P<pk>\d+)',views.user_comments,name='comment'),
+    url('follow/(?P<operation>.+)/(?P<id>\d+)',views.follow,name='follow'),
+  
   
 ]
 if settings.DEBUG:

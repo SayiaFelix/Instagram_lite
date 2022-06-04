@@ -94,3 +94,13 @@ def user_comments(request,pk):
     else:
         form = CommentForm()
         return render(request,'insta/comment.html',{"user":current_user,"comment_form":form})
+
+
+def follow(request,operation,id):
+    current_user=User.objects.get(id=id)
+    if operation=='follow':
+        Follow.follow(request.user,current_user)
+        return redirect('homepage')
+    elif operation=='unfollow':
+        Follow.unfollow(request.user,current_user)
+        return redirect('homepage')
