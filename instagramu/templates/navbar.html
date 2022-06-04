@@ -23,7 +23,12 @@
             <ul class="navbar-nav ml-auto">
                 {% comment %} <li class="nav-item">
                     <a class="nav-link text-light" href="">Login</a>
-                </li> {% endcomment %}
+                </li> {% endcomment %}  
+                <li class="nav-item">
+                    <a class="nav-link open-nav" href="{% url "homepage"%}" data-toggle="tooltip" data-placement="bottom" title="Home">
+                        <i class="fa-brands fa-instagram"></i>
+                    </a>
+                </li>
                 <li class="nav-item">
                     <a class="nav-link open-nav" href="" data-toggle="tooltip" data-placement="bottom" title="Upload Image">
                         <i class="fas fa-cloud-upload-alt "></i>
@@ -31,19 +36,15 @@
                 </li>
                 <li class="nav-item">
                     <a class="nav-link open-nav" href="#" data-toggle="tooltip" data-placement="bottom" title="Discover People">
-                        <i class="far fa-heart "></i>
+                        <i class="far fa-heart"></i>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link open-nav" href="" data-toggle="tooltip" data-placement="bottom" title="Profile">
+                    <a class="nav-link open-nav" href="/profile/{{user.id}}" data-toggle="tooltip" data-placement="bottom" title="Profile">
                         <i class="far fa-user-circle show"></i>
                     </a>
                 </li>
-                 <li class="nav-item">
-                    <a class="nav-link open-nav" href="" data-toggle="tooltip" data-placement="bottom" title="Profile">
-                        <i class="fa-brands fa-instagram"></i>
-                    </a>
-                </li>
+              
                 <li class="nav-item">
                     <a class="nav-link open-nav" data-toggle="modal" data-target="#settings" data-toggle="tooltip" data-placement="bottom" title="Settings">
                         <i class="fas fa-th "></i>
