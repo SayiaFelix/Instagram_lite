@@ -1,4 +1,4 @@
-# Instagram_lite
+# Instagram_Lite
 ![InstagramLite](/static/image/bg1.png)
 
 ## Author: [SayiaFelix](https://github.com/sayiaFelix/)
