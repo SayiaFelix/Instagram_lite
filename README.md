@@ -4,7 +4,7 @@
 ## Author [SayiaFelix](https://github.com/sayiaFelix/)
 
 ## Description
-This is an Instagram Clone application where it allows users to upload, like and comment on other peoples images/posts. Images must have captions and users are required to add their Profile after login before doing anything else in the app.All post will be displayed on the Profile of a user. The admin is  currently responsible for editing or deleting images.
+This is an Instagram Clone application where it allows users to upload, like and comment on other peoples images/posts. Images must have captions and users are required to add their Profile after login before uploading posts.All posts will be displayed on the Profile of a user.
 **Users must log in with credible emails**
 
 ## User Stories

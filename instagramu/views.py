@@ -7,8 +7,6 @@ from .forms import *
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import messages
-from django.core.mail import send_mail
-from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
 
 
@@ -132,26 +130,6 @@ def upload_image(request):
                 form = UploadForm()
             return render(request,'insta/upload.html',{"user":current_user,"form":form})
 
-
-# def login_user(request):  
-#     if request.method == "POST":
-#         username = request.POST.get("username")
-#         password = request.POST.get("password")
-#         user = authenticate(username=username, password=password)
-#         if user:
-#             if user.is_active:
-#                 login(request, user)
-#                 return HttpResponseRedirect(reverse("homepage"))
-#             else:
-               
-#                 return HttpResponseRedirect(reverse("login"))
-
-#         else:
-#             messages.success(request,('Invalid Information,Try Again!!'))
-#             return HttpResponseRedirect(reverse("login")) 
-#     else:
-#         return render(request, "registration/login.html",)
-
 def login_user(request):
     if request.method == 'POST':
         username = request.POST['username']
@@ -179,10 +157,6 @@ def register_user(request):
 
              username = form.cleaned_data['username']
              email = form.cleaned_data['email']
-
-            #  recipient = UserRegisterForm(username = username,email =email)
-            #  recipient.save()
-
              send_welcome_email(username,email)
 
              messages.success(request,f'Account for {username}, was created Successfully!!')
