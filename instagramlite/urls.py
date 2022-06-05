@@ -5,10 +5,10 @@ from instagramu import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # path('register/',user_views.register,name='register'),
     path('', include('instagramu.urls')),
+    # path('follows/', include('django.contrib.auth.urls')),
+    # path('follows/', include('follows.urls')),
     path('register/',views.register_user,name='register'),
-    path('login/',views.login_user,name='login'),
     path('accounts/login/',views.login_user,name='login'),
     path('logout/', views.logout_user, name='logout'),
     path('tinymce/', include('tinymce.urls')),

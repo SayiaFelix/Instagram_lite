@@ -15,6 +15,7 @@ urlpatterns=[
     url('comment/(?P<pk>\d+)',views.user_comments,name='comment'),
     url('follow/(?P<operation>.+)/(?P<id>\d+)',views.follow,name='follow'),
     url('upload/', views.upload_image, name='upload_image'),
+  
 ]
 
 if settings.DEBUG:

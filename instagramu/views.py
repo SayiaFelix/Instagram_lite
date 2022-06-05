@@ -133,41 +133,41 @@ def upload_image(request):
             return render(request,'insta/upload.html',{"user":current_user,"form":form})
 
 
-def login_user(request):  
-    if request.method == "POST":
-        username = request.POST.get("username")
-        password = request.POST.get("password")
-        user = authenticate(username=username, password=password)
-        if user:
-            if user.is_active:
-                login(request, user)
-                return HttpResponseRedirect(reverse("homepage"))
-            else:
+# def login_user(request):  
+#     if request.method == "POST":
+#         username = request.POST.get("username")
+#         password = request.POST.get("password")
+#         user = authenticate(username=username, password=password)
+#         if user:
+#             if user.is_active:
+#                 login(request, user)
+#                 return HttpResponseRedirect(reverse("homepage"))
+#             else:
                
-                return HttpResponseRedirect(reverse("login"))
+#                 return HttpResponseRedirect(reverse("login"))
 
-        else:
-            messages.success(request,('Invalid Information,Try Again!!'))
-            return HttpResponseRedirect(reverse("login")) 
-    else:
-        return render(request, "registration/login.html",)
-
-# def login_user(request):
-#     if request.method == 'POST':
-#         username = request.POST['username']
-#         password = request.POST['password']
-#         user = authenticate(request, username=username, password=password)
-#         if user is not None:
-#          login(request, user)
-#          return redirect('homepage')
-        
 #         else:
-#             messages.success(request,('Invalid information'))
-#             return redirect('login')
-         
+#             messages.success(request,('Invalid Information,Try Again!!'))
+#             return HttpResponseRedirect(reverse("login")) 
 #     else:
+#         return render(request, "registration/login.html",)
 
-#      return render(request,'registration/login.html')
+def login_user(request):
+    if request.method == 'POST':
+        username = request.POST['username']
+        password = request.POST['password']
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+         login(request, user)
+         return redirect('homepage')
+        
+        else:
+            messages.success(request,('Invalid information'))
+            return redirect('login')
+         
+    else:
+
+     return render(request,'registration/login.html')
 
 
 
