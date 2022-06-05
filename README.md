@@ -37,7 +37,6 @@ Admin should:
 | Display single images on modal | **On  click** | All details should be viewed|
 | To add an image  | **Through Admin and also homepage** | Click on upload icon on the navbar and also on the comment section and upload respectively|
 | To edit image  | **Use Admin dashboard** | Redirected to the  image form details and editing happens|
-
 | To search  | **Enter text in search bar** | Users can search by username|
 | Comment on images | **Add comments below respective image** | Users can add comments on any image|
 | Like images | **Add likes to an image** | Users can add likes to images they like|
