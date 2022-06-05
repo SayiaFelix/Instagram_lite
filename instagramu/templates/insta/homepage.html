@@ -20,7 +20,7 @@
         <hr>
         <div class="card-body">
           <div class="">
-            <a id="like" href="{% url 'like' operation='like' pk=image.id%}"><i class="far fa-heart fa-lg" style="margin-right:10px;color:red;"></i></a>
+            <a href="{% url 'like' operation='like' pk=image.id%}"><i class="far fa-heart fa-lg" style="margin-right:10px;color:red;"></i></a>
             <a href="#comment" style="color:black;"><i class="far fa-comment fa-lg"></i></a>
             <a href="/upload"><i class="fas fa-upload fa-lg" style="margin-right:15px;color:black;"></i></a>
           </div>
@@ -51,7 +51,7 @@
             {% for profile in profile %}
               {% if profile.user == user %}
                <img class="mb-1" src="{{profile.photo.url}}" alt="" style="height:70px;width:70px; border-radius:50%; float:left; margin-right:10px">
-                   <h2 style="font-size:20px; align:center;"> <a href="/profile/{{user.id}}" style="text-decoration:none;"class="user text-dark">{{profile.user}}</a></h2>
+                <h2 style="font-size:20px; align:center;"> <a href="/profile/{{user.id}}" style="text-decoration:none;"class="user text-dark">{{profile.user}}</a></h2>
               <br>
               <hr>
               <div class="user_stories" style="margin-bottom:15px">
@@ -62,7 +62,6 @@
               </div>
               {% endif %}
             {% endfor %}
-
           </div>
         <hr>
       </div>
@@ -75,7 +74,7 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLongTitle"> Posted On:  {{image.posted|date:"D, d M Y" }}</h5>
+        <h6 class="modal-title" id="exampleModalLongTitle"> Posted On:  {{image.posted|date:"D, d M Y" }}</h6>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
       </div>
@@ -83,15 +82,15 @@
         <img class="card-img-top" class="img-responsive" src="{{image.image.url}}" data-target="#extraModal{{image.id}}" data-toggle="modal" size="80px200">
         <br>
         <hr>
-        <h6> Caption: {{image.caption}}</h6>
-        <label>{{image.likes}} Likes</label>
+        <h6><b> Caption:</b> {{image.caption}}</h6>
+        <label><b> {{image.likes}} </b>Likes</label>
         <div class="modal-footer">
-          <button type="button" class="btn btn-outline-btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
   </div>
 </div>
-{% endfor %}
 
+{% endfor %}
 {% endblock %}

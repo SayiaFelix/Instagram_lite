@@ -11,54 +11,50 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-md-4 mx-auto">
-                     <form class="form-inline mx-auto my-lg-0" role="search" style="background-color: #EBEBEB"  action="{% url 'search_results' %}" method="get">
-                           {% csrf_token %}
-                             <div class="form-group">
-                                <input type="text" class="form-control" role="search" placeholder="Search" aria-label="Search" name="username">
-                            </div>
-                        </form> 
+                        <form class="form-inline mx-auto my-lg-0" role="search" style="background-color: #EBEBEB"  action="{% url 'search_results' %}" method="get">
+                            {% csrf_token %}
+                                <div class="form-group">
+                                    <input type="text" class="form-control" role="search" placeholder="Search" aria-label="Search" name="username">
+                                </div>
+                            </form> 
                     </div>
                 </div>
             </div>
-            <div class="">
-
-            <ul class="navbar-nav ml-auto">
-                {% comment %} <li class="nav-item">
-                    <a class="nav-link text-light" href="">Login</a>
-                </li> {% endcomment %}  
-                <li class="nav-item">
-                    <a class="nav-link open-nav" href="{% url "homepage"%}" data-toggle="tooltip" data-placement="bottom" title="Home">
-                        <i class="fa-brands fa-instagram fa-lg"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link open-nav" href="{% url 'upload_image'%}" data-toggle="tooltip" data-placement="bottom" title="Upload Photo">
-                        <i class="fas fa-cloud-upload-alt fa-lg"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link open-nav" href="#" data-toggle="tooltip" data-placement="bottom" title="Discover People">
-                        <i class="far fa-heart fa-lg"></i>
-                    </a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link open-nav" href="/profile/{{user.id}}" data-toggle="tooltip" data-placement="bottom" title="Profile">
-                        <i class="far fa-user-circle show fa-lg"></i>
-                    </a>
-                </li>
-              
-                <li class="nav-item">
-                    <a class="nav-link open-nav" data-toggle="modal" data-target="#settings" data-toggle="tooltip" data-placement="bottom" title="Settings">
-                        <i class="fas fa-th fa-lg"></i>
-                    </a>
-                </li>
-                 <li class="nav-item">
-                    <a class="nav-link open-nav" href="/logout/" data-toggle="tooltip" data-placement="bottom" title="Logout">
-                      <i class="fas fa-sign-out-alt fa-lg"></i>
-                    </a>
-                </li>
-            </ul>
-        </div>
+            <div class="col-md-4">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="{% url "homepage"%}" data-toggle="tooltip" data-placement="bottom" title="Home">
+                            <i class="fa-brands fa-instagram fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="{% url 'upload_image'%}" data-toggle="tooltip" data-placement="bottom" title="Upload Photo">
+                            <i class="fas fa-cloud-upload-alt fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="#" data-toggle="tooltip" data-placement="bottom" title="Discover People">
+                            <i class="far fa-heart fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="/profile/{{user.id}}" data-toggle="tooltip" data-placement="bottom" title="Profile">
+                            <i class="far fa-user-circle show fa-lg"></i>
+                        </a>
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" data-toggle="modal" data-target="#settings" data-toggle="tooltip" data-placement="bottom" title="Settings">
+                            <i class="fas fa-th fa-lg"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link open-nav" href="/logout/" data-toggle="tooltip" data-placement="bottom" title="Logout">
+                        <i class="fas fa-sign-out-alt fa-lg"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </div>
 </nav>
@@ -68,8 +64,8 @@
         <div class="modal-content">
             <div class="modal-body">
                 <ul class="list-group">
-                <li class="list-group-item text-center"><a href="#">Change Password</a></i></li>
-                <li class="list-group-item text-center"><a href="/logout/">Log Out</a></li>
+                <li class="list-group-item text-center"><a style="text-decoration:none;" href="#">Change Password</a></i></li>
+                <li class="list-group-item text-center"><a style="text-decoration:none;" href="/logout/">Log Out</a></li>
                 <li class="list-group-item text-center"><a data-dismiss="modal">Cancel</a></li>
                 </ul>
             </div>
