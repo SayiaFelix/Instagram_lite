@@ -204,7 +204,7 @@ def register_user(request):
              user.set_password(user.password)
              user.save()
              username = form.cleaned_data.get('username')
-             
+
             #  email = form.cleaned_data.get('email')
 
             #  recipient = UserRegisterForm(username = username,email =email)
@@ -212,7 +212,7 @@ def register_user(request):
             #  send_welcome_email(username,email)
 
              messages.success(request,f'Account for {username}, was created Successfully!!')
-             return redirect('login')
+             return redirect('homepage')
     else:
          form = UserRegisterForm()
     return render (request,'registration/register.html',{'form':form})
@@ -222,9 +222,9 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse("login"))
 
-def sendmail(request):
-    subject="Sir Felix Insta Lite Team"
-    message="Welcome to Sir Felix Insta Lite. Enjoy posting photos and following your best friends."
-    sendfrom= "settings.EMAIL_HOST_USER"
-    toaddress= [""]
-    send_mail(subject,message,sendfrom,toaddress)
+# def sendmail(request):
+#     subject="Sir Felix Insta Lite Team"
+#     message="Welcome to Sir Felix Insta Lite. Enjoy posting photos and following your best friends."
+#     sendfrom= "settings.EMAIL_HOST_USER"
+#     toaddress= [""]
+#     send_mail(subject,message,sendfrom,toaddress)

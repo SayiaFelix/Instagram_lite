@@ -10,10 +10,11 @@
       {% for image in Images %}
       <div class="card mr-0" style="max-width:40rem;">
         <div class="card-header" style="display: flex;">
-           <img class="img-fluid rounded-circle" src="{{image.profile.photo.url}}" style="height:50px;margin-top:5px;margin-bottom:5px;">
+           <img class="img-fluid rounded-circle" src="{{image.profile.photo.url}}" style="height:55px;margin-top:5px;margin-bottom:5px;">
               <a href="/profile/{{user.id}}" style="color: black; text-decoration: none;">
                         <h5 class="card-title" style="padding-top: 15px; margin-left:13px;">{{image.profile.user}} </h5>
                     </a>
+                    <h4 style="padding-top: 1%; margin-left:71%;">...</h4>
         </div>
         <img src="{{image.image.url}}" class="card-img-top" data-target="#extraModal{{image.id}}" data-toggle="modal">
         <hr>
@@ -50,7 +51,7 @@
             {% for profile in profile %}
               {% if profile.user == user %}
                <img class="mb-1" src="{{profile.photo.url}}" alt="" style="height:70px;width:70px; border-radius:50%; float:left; margin-right:10px">
-              <h2 style="font-size:20px; align:center;">{{profile.user}}</h2>
+                   <h2 style="font-size:20px; align:center;"> <a href="/profile/{{user.id}}" style="text-decoration:none;"class="user text-dark">{{profile.user}}</a></h2>
               <br>
               <hr>
               <div class="user_stories" style="margin-bottom:15px">
