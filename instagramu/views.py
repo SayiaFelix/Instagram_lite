@@ -222,9 +222,3 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse("login"))
 
-# def sendmail(request):
-#     subject="Sir Felix Insta Lite Team"
-#     message="Welcome to Sir Felix Insta Lite. Enjoy posting photos and following your best friends."
-#     sendfrom= "settings.EMAIL_HOST_USER"
-#     toaddress= [""]
-#     send_mail(subject,message,sendfrom,toaddress)
