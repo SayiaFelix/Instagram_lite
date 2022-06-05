@@ -1,10 +1,11 @@
 # Instagram_lite
 ![InstagramLite](/static/img/)
 
-## Author [SayiaFelix](https://github.com/sayiaFelix/)
+## Author: [SayiaFelix](https://github.com/sayiaFelix/)
 
 ## Description
 This is an Instagram Clone application where it allows users to upload, like and comment on other peoples images/posts. Images must have captions and users are required to add their Profile after login before uploading posts.All posts will be displayed on the Profile of a user.
+
 **Users must log in with credible emails**
 
 ## User Stories
@@ -36,7 +37,7 @@ Admin should:
 | Display single images on modal | **On  click** | All details should be viewed|
 | To add an image  | **Through Admin and also homepage** | Click on upload icon on the navbar and also on the comment section and upload respectively|
 | To edit image  | **Use Admin dashboard** | Redirected to the  image form details and editing happens|
-| To delete an image  | **Use Admin dashboard** | click on image object and confirm by delete button|
+
 | To search  | **Enter text in search bar** | Users can search by username|
 | Comment on images | **Add comments below respective image** | Users can add comments on any image|
 | Like images | **Add likes to an image** | Users can add likes to images they like|
@@ -85,7 +86,7 @@ Admin should:
 
 ## License
 
-Copyright (c) 2022 SayiaFelix
+Copyright (c) 2022 Sayia Felix
 
 ------------
 
