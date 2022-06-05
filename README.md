@@ -8,6 +8,7 @@ This is an Instagram Clone application where it allows users to upload, like and
 **Users must log in with credible emails**
 ![InstagramLite](/static/image/bg2.png)
 
+![InstagramLite](/static/image/profile.png)
 
 ## User Stories
 These are the behaviours/features that the application implements for use by a user.
@@ -42,7 +43,7 @@ Admin should:
 | Comment on images | **Add comments below respective image** | Users can add comments on any image|
 | Like images | **Add likes to an image** | Users can add likes to images they like|
 
-![InstagramLite](/static/image/profile.png)
+
 
 ## SetUp / Installation Requirements
 ### Prerequisites
