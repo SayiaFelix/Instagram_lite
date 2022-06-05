@@ -169,33 +169,6 @@ def login_user(request):
 
      return render(request,'registration/login.html')
 
-
-
-# def register_user(request):
-#     registered = False
-#     if request.method == "POST":
-#         user_form = UserForm(request.POST)
-        
-#         if user_form.is_valid():
-#             user = user_form.save()
-#             user.set_password(user.password)
-#             user.save()
-
-#             user_profile = Profile()
-#             user_profile.user = user
-#             user_profile.save()
-#             registered = True
-
-#             return HttpResponseRedirect(reverse("login"))
-
-#         else:
-#             pass
-
-#     else:
-#         user_form = UserForm()
-        
-#     return render(request, "registration/register.html", context={"user_form":form,"registered":registered})
-
 def register_user(request):
     if request.method == 'POST':
          form = UserRegisterForm(request.POST)
@@ -203,13 +176,14 @@ def register_user(request):
              user= form.save()
              user.set_password(user.password)
              user.save()
-             username = form.cleaned_data.get('username')
 
-            #  email = form.cleaned_data.get('email')
+             username = form.cleaned_data['username']
+             email = form.cleaned_data['email']
 
             #  recipient = UserRegisterForm(username = username,email =email)
             #  recipient.save()
-            #  send_welcome_email(username,email)
+
+             send_welcome_email(username,email)
 
              messages.success(request,f'Account for {username}, was created Successfully!!')
              return redirect('homepage')
