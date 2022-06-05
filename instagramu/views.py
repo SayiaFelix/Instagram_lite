@@ -1,3 +1,4 @@
+
 from django.shortcuts import render,redirect,get_object_or_404
 from django.http  import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
@@ -8,6 +9,7 @@ from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.forms import UserCreationForm
 
 
 # Create your views here.
@@ -151,15 +153,16 @@ def register_user(request):
     if request.method == 'POST':
          form = UserRegisterForm(request.POST)
          if form.is_valid():
-             user= form.save()
-             user.set_password(user.password)
-             user.save()
-
+             form.save()
              username = form.cleaned_data['username']
+             password = form.cleaned_data['password1']
              email = form.cleaned_data['email']
-             send_welcome_email(username,email)
+             send_welcome_email(username,email) 
 
-             messages.success(request,f'Account for {username}, was created Successfully!!')
+             user = authenticate(username=username, password=password)
+             login(request,user)
+
+             messages.success(request,f'Hello {username}, Your account was Successfully Created!!! You will receive our email shortly.')
              return redirect('homepage')
     else:
          form = UserRegisterForm()

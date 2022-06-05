@@ -3,9 +3,21 @@
 {{ block.super}}
 {% load bootstrap4 %}
 <hr class="text-dark">
-<div class="container-fluid">
+<div class="container">
+      {%if messages%}
+        {%for message in messages%}   
+                <div class="alert-{{message.tags}}">
+                  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+                    <strong>{{message}}</strong> 
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                  </div>
+               </div>
+          {%endfor%}
+      {%endif%}
   <div class="row">
-    <div class="col-2"></div>
+    <div class="col-2">
+      <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary btn-lg">+Profile</a>
+    </div>
     <div class="col-8" style="max-width:45rem; margin-top:10px;">
       {% for image in Images %}
       <div class="card mr-0" style="max-width:40rem;">
@@ -56,7 +68,7 @@
               <hr>
               <div class="user_stories" style="margin-bottom:15px">
                     <a href="/follow/follow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{follow}}follow</a>
-                    <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary btn-lg">+Profile</a>
+                   
                     <a href="/follow/unfollow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{unfollow}}unfollow</a>
                     <br>    
               </div>
@@ -64,6 +76,8 @@
             {% endfor %}
           </div>
         <hr>
+         
+         
       </div>
     </div>
   </div>
