@@ -39,9 +39,13 @@ def homepage(request):
 
 @login_required
 def user_profile(request,profile_id):
-    profile = Profile.objects.get(pk = profile_id)
-    Images = Image.objects.filter(profile_id=profile).all()
+    # profile = Profile.objects.get(pk = profile_id)
+    try:
+     profile = Profile.objects.get(pk=profile_id)
 
+    except Profile.DoesNotExist:
+      profile = None
+    Images = Image.objects.filter(profile_id=profile).all()
     return render(request,"profile/profile.html",{"profile":profile,"Images":Images})
 
 def like(request,operation,pk):
@@ -201,7 +205,7 @@ def register_user(request):
              user.set_password(user.password)
              user.save()
              username = form.cleaned_data.get('username')
-             messages.success(request,f'Account for {username},  was successfully created!!')
+             messages.success(request,f'Account for {username}, was created Successfully!!')
              return redirect('login')
     else:
          form = UserRegisterForm()

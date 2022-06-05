@@ -45,21 +45,25 @@
       <br>
       {% endfor %}
     </div>
-    <div class="col-2 stories" style="max-width:20rem; margin-top:25px;">
+    <div class="col-2 stories" style="max-width:25rem; margin-top:25px;">
       <div class="" style="position:fixed; width:350px">
           <hr>
-          <div style="margin-bottom:30px;margin-top:20px;">
+          <div style="">
             {% for profile in profile %}
               {% if profile.user == user %}
-               <img class="mb-1" src="{{profile.photo.url}}" alt="" style="height:52px;width:52px; border-radius:50%; float:left; margin-right:10px">
+               <img class="mb-1" src="{{profile.photo.url}}" alt="" style="height:70px;width:70px; border-radius:50%; float:left; margin-right:10px">
               <h2 style="font-size:20px; align:center;">{{profile.user}}</h2>
+              <br>
+              <hr>
               <div class="user_stories" style="margin-bottom:15px">
                     <a href="/follow/follow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{follow}}follow</a>
+                    <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary btn-lg">+Profile</a>
                     <a href="/follow/unfollow/{{profile.user.id}}/" class="btn btn-outline-secondary btn-sm">{{unfollow}}unfollow</a>
-                    <br><br>
+                    <br>    
               </div>
               {% endif %}
             {% endfor %}
+
           </div>
         <hr>
       </div>

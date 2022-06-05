@@ -18,11 +18,15 @@
         <div class="card border-secondary">
             <br>
             <h1 class="text-center">  {{user.user}}</h1>
-            <hr>
-            <img class="card-img-top" class="img-responsive" src="{{user.photo.url}}" 
+            <hr>  
+            <img class="card-img-top" class="img-responsive" src="{{user.photo.url}}">
+            {% comment %} {% if user.image %}   
+            
+            {% endif %} {% endcomment %}
          </div>
             {% endfor %}
         {% endif %}
+     
     </div>
 </div>
 <br>
