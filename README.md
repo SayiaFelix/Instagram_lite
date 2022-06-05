@@ -5,8 +5,9 @@
 
 ## Description
 This is an Instagram Clone application where it allows users to upload, like and comment on other peoples images/posts. Images must have captions and users are required to add their Profile after login before uploading posts.All posts will be displayed on the Profile of a user.
-![InstagramLite](/static/image/bg2.png)
 **Users must log in with credible emails**
+![InstagramLite](/static/image/bg2.png)
+
 
 ## User Stories
 These are the behaviours/features that the application implements for use by a user.
@@ -40,7 +41,7 @@ Admin should:
 | To search  | **Enter text in search bar** | Users can search by username|
 | Comment on images | **Add comments below respective image** | Users can add comments on any image|
 | Like images | **Add likes to an image** | Users can add likes to images they like|
-
+![InstagramLite](/static/image/profile.png)
 
 ## SetUp / Installation Requirements
 ### Prerequisites
