@@ -70,7 +70,7 @@ class Comment(models.Model):
 
     @classmethod
     def get_comment(cls):
-        comment = Comment.objects.all()
+        comment = Comment.objects.all()[::-1]
         return comment
 
 

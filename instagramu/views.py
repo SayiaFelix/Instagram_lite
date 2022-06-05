@@ -1,28 +1,23 @@
 from django.shortcuts import render,redirect,get_object_or_404
-from django.http  import HttpResponse,Http404,HttpResponseRedirect
+from django.http  import HttpResponseRedirect
 from django.contrib.auth.decorators import login_required
+from .email import send_welcome_email
 from .models import *
 from .forms import *
-from django.contrib.sites.shortcuts import get_current_site
-from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
-from django.template.loader import render_to_string
-from .tokens import account_activation_token
 from django.contrib.auth.models import User
 from django.urls import reverse
 from django.contrib import messages
 from django.core.mail import send_mail
+from django.conf import settings
 from django.contrib.auth import authenticate, login, logout
-# Create your views here.
-# def homepage(request):
-#     return render(request, 'insta/homepage.html')
 
+
+# Create your views here.
 @login_required
 def homepage(request):
     Images = Image.get_images()
     comments = Comment.get_comment()
     profile = Profile.get_profile()
-
     current_user = request.user
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -46,17 +41,10 @@ def user_profile(request,profile_id):
     except Profile.DoesNotExist:
       profile = None
     Images = Image.objects.filter(profile_id=profile).all()
+
     return render(request,"profile/profile.html",{"profile":profile,"Images":Images})
 
-def like(request,operation,pk):
-    image = get_object_or_404(Image,pk=pk)
-    if operation == 'like':
-        image.likes += 1
-        image.save()
-    elif operation =='unlike':
-        image.likes -= 1
-        image.save()
-    return redirect('homepage')
+
 
 @login_required
 def add_user_profile(request):
@@ -73,6 +61,7 @@ def add_user_profile(request):
         form = NewProfileForm()
     return render(request, 'profile/new_user_profile.html', {"form": form})
 
+
 @login_required
 def search_results(request):
     current_user = request.user
@@ -86,6 +75,8 @@ def search_results(request):
     else:
         message = "You haven't searched for any username"
         return render(request,'insta/search.html',{"message":message})
+
+
 @login_required
 def user_comments(request,pk):
     image = get_object_or_404(Image, pk=pk)
@@ -111,6 +102,18 @@ def follow(request,operation,id):
     elif operation=='unfollow':
         Follow.unfollow(request.user,current_user)
         return redirect('homepage')
+        
+def like(request,operation,pk):
+    image = get_object_or_404(Image,pk=pk)
+    if operation == 'like':
+        image.likes += 1
+        image.save()
+    elif operation =='unlike':
+        image.likes -= 1
+        image.save()
+    return redirect('homepage')
+
+
 @login_required  
 def upload_image(request):
     current_user = request.user
@@ -166,10 +169,6 @@ def login_user(request):
 
 #      return render(request,'registration/login.html')
 
-@login_required
-def logout_user(request):
-    logout(request)
-    return HttpResponseRedirect(reverse("login"))
 
 
 # def register_user(request):
@@ -205,9 +204,27 @@ def register_user(request):
              user.set_password(user.password)
              user.save()
              username = form.cleaned_data.get('username')
+             
+            #  email = form.cleaned_data.get('email')
+
+            #  recipient = UserRegisterForm(username = username,email =email)
+            #  recipient.save()
+            #  send_welcome_email(username,email)
+
              messages.success(request,f'Account for {username}, was created Successfully!!')
              return redirect('login')
     else:
          form = UserRegisterForm()
     return render (request,'registration/register.html',{'form':form})
 
+@login_required
+def logout_user(request):
+    logout(request)
+    return HttpResponseRedirect(reverse("login"))
+
+def sendmail(request):
+    subject="Sir Felix Insta Lite Team"
+    message="Welcome to Sir Felix Insta Lite. Enjoy posting photos and following your best friends."
+    sendfrom= "settings.EMAIL_HOST_USER"
+    toaddress= [""]
+    send_mail(subject,message,sendfrom,toaddress)

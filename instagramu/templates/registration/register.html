@@ -18,6 +18,8 @@
             <br>
             {% if form.errors %}
                 <p class="text-danger text-center">There was an error, check your Information and try again!!!</p>
+            {%else%}
+                <h1 class="h6 mb-3 font-weight-normal text-dark text-center">Sign up to see photos and videos from your friends.</h1>
             {% endif %}
             <div class="signup-fields">
                 <div class="section">
@@ -27,8 +29,6 @@
 
                             {% if registered %}
                              <h1 class="h6 mb-3 font-weight-normal text-dark text-center">Thank you for signing up</h1>
-                            {%else%}
-                             <h1 class="h6 mb-3 font-weight-normal text-dark text-center">Sign up to see photos and videos from your friends.</h1>
                             {%endif%}
                             <hr>
                             {% csrf_token %}
