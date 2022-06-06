@@ -9,29 +9,29 @@
   <div class="row">
     <div class="col-md-12">
       <div class="row">
-        <div class="col-md-2"></div>
+        <div class="col-md-1"></div>
         <div class="col-md-4">
           {% if profile.photo %}
             <img src="{{profile.photo.url}}" alt="profile-photo" class="img-fluid-circle" style="border-radius: 50%;height:300px;width: 250px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);">
           {% endif %}
-        </div>
-        <div class="col-md-4 text-left">
+         </div>
+         <div class="col-md-4 text-left">
           <br><br>
           <ul class="list-inline">
-            <li class="list-inline-item">
-               <h3> <span class="username">{{ profile.user }}</span></h3>
-            </li> 
-            <hr>
-            <br>
-            {% if profile.user == user %}
-            <li class="list-inline-item">
-              <a data-toggle="modal" data-target="#edit" style="text-decoration:none;"  href=""><i class="far fa-edit"></i>Edit Profile</a>
-            </li>
-            {% else %}
-            <li class="list-inline-item">
-              <a href="#" class="btn btn-primary">Follow</a>
-            </li>
-            {% endif %}
+              <li class="list-inline-item">
+                <h3> <span class="username">{{ profile.user }}</span></h3>
+              </li> 
+              <hr>
+              <br>
+              {% if profile.user == user %}
+              <li class="list-inline-item">
+                <a data-toggle="modal" data-target="#edit" style="text-decoration:none;"  href=""><i class="far fa-edit"></i>Edit Profile</a>
+              </li>
+              {% else %}
+              <li class="list-inline-item">
+                <a href="#" class="btn btn-primary">Follow</a>
+              </li>
+              {% endif %}
           </ul>
 
           <ul class="list-inline">
@@ -45,31 +45,29 @@
               <span class="font-weight-bold">{{profile.user.c_user.all | length}}</span> Following
             </li>
           </ul>
-         {% if profile.user == user %}
+          {% if profile.user == user %}
           <p><a style="text-decoration:none;" href="{% url 'upload_image' %}">Upload Profile Photo</a></p>
           {% endif %}
         </div>
       </div>
     </div>
   </div>
+  <br>
   <hr>
   <div class="container">
     <div class="row">
-       <h2 class="text-center">Posts </h2> <hr><br><p>Posted by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
+       <p>Posts by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
       {% for image in Images %}
       <div class="col-md-4">
         <img src="{{image.image.url}}" alt="Image" style="height:520px;width:350px; border-radius:15px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);"><br>
-      </div>
-        
+      </div>      
       {% empty %}
       <div class="col-md-12">
-        <h2>   Profile has no uploaded Posts </h2>
-      </div>
-     
+        <h2>  Profile has no uploaded Posts </h2>
+      </div> 
       {% endfor %} 
     </div>
   </div>
-
 </div>
 <div class="modal fade" id="edit" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
   <div class="modal-dialog modal-dialog-centered" role="document">

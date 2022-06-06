@@ -6,8 +6,6 @@ from instagramu import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('instagramu.urls')),
-    # path('follows/', include('django.contrib.auth.urls')),
-    # path('follows/', include('follows.urls')),
     path('register/',views.register_user,name='register'),
     path('accounts/login/',views.login_user,name='login'),
     path('logout/', views.logout_user, name='logout'),

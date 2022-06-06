@@ -1,10 +1,7 @@
-
 from django.conf.urls import url
 from . import views
 from django.conf import settings
 from django.conf.urls.static import static
-
-
 
 urlpatterns=[
     url('^$',views.homepage, name='homepage'),
@@ -15,7 +12,7 @@ urlpatterns=[
     url('comment/(?P<pk>\d+)',views.user_comments,name='comment'),
     url('follow/(?P<operation>.+)/(?P<id>\d+)',views.follow,name='follow'),
     url('upload/', views.upload_image, name='upload_image'),
-  
+    url('all/(?P<pk>\d+)', views.images, name='images'),
 ]
 
 if settings.DEBUG:

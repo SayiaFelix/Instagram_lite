@@ -34,7 +34,6 @@ def homepage(request):
 
 @login_required
 def user_profile(request,profile_id):
-    # profile = Profile.objects.get(pk = profile_id)
     try:
      profile = Profile.objects.get(pk=profile_id)
 
@@ -43,7 +42,6 @@ def user_profile(request,profile_id):
     Images = Image.objects.filter(profile_id=profile).all()
 
     return render(request,"profile/profile.html",{"profile":profile,"Images":Images})
-
 
 
 @login_required
@@ -93,7 +91,6 @@ def user_comments(request,pk):
         form = CommentForm()
         return render(request,{"user":current_user,"comment_form":form})
 
-
 def follow(request,operation,id):
     current_user=User.objects.get(id=id)
     if operation=='follow':
@@ -112,7 +109,6 @@ def like(request,operation,pk):
         image.likes -= 1
         image.save()
     return redirect('homepage')
-
 
 @login_required  
 def upload_image(request):
@@ -173,3 +169,9 @@ def logout_user(request):
     logout(request)
     return HttpResponseRedirect(reverse("login"))
 
+@login_required
+def images(request, pk):
+    profile = Profile.objects.get(pk=pk)
+    Images = Image.objects.all().filter(name=pk)
+
+    return render(request, 'insta/images.html',{"profile": profile, 'Images': Images} )
