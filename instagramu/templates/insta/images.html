@@ -10,7 +10,7 @@
     <div class="col-md-12">
       <div class="row">
         <div class="col-md-1"></div>
-        <div class="col-md-4">
+        <div class="col-md-3">
           {% if profile.photo %}
             <img src="{{profile.photo.url}}" alt="profile-photo" class="img-fluid-circle" style="border-radius: 50%;height:300px;width: 250px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);">
           {% endif %}
@@ -42,4 +42,19 @@
   <br>
 </div>
 <hr>
+ <div class="container">
+    <div class="row">
+       <p>Posts by <strong><em style="color:#000">{{profile.user}}</em></strong></p>
+      {% for image in Images %}
+      <div class="col-md-4">
+        <img src="{{image.image.url}}" alt="Image" style="height:520px;width:350px; border-radius:15px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);"><br>
+      </div>      
+      {% empty %}
+      <div class="col-md-12">
+        <h2>  Profile has no uploaded Posts </h2>
+      </div> 
+      {% endfor %} 
+    </div>
+  </div>
+</div>
 {% endblock %}

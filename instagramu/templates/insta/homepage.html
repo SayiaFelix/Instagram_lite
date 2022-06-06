@@ -17,10 +17,10 @@
   <div class="row">
     <div class="col-2">
       <br>
-      <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary btn-block mb-4 mx-auto"><i class="fas fa-upload fa-lg"></i> Profile</a>
+      {% comment %} <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary btn-block mb-4 mx-auto"><i class="fas fa-upload fa-lg"></i> Profile</a> {% endcomment %}
      
     </div>
-    <div class="col-8" style="max-width:42rem; margin-top:10px;">
+    <div class="col-8" style="max-width:43rem; margin-top:10px;">
       {% for image in Images %}
       <div class="card mr-0" style="max-width:39rem;">
         <div class="card-header" style="display: flex;">
@@ -58,7 +58,7 @@
       <br>
       {% endfor %}
     </div>
-    <div class="col-2" style="max-width:20rem; margin-top:3%;margin-left:1%;">
+    <div class="col-2" style="max-width:20rem; margin-top:1%;margin-left:1%;">
       <div class="" style="position:fixed; width:300px">
           <hr>
           <div style="">
@@ -68,7 +68,7 @@
                 <h2 style="font-size:20px; align:center;"> <a href="/profile/{{user.id}}" style="text-decoration:none;">{{profile.user}}</a></h2>
               <br>
               <br>
-             <hr>
+            
               {% endif %}
             {% endfor %}
           </div>

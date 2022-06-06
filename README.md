@@ -1,13 +1,12 @@
 # Instagram_Lite
-![InstagramLite](/static/image/bg.png)
+![InstagramLite](/static/image/pic1.png)
 
 ## Author: [SayiaFelix](https://github.com/sayiaFelix/)
-![InstagramLite](/static/image/bg.png)
 
 ## Description
-This is an Instagram Clone application where it allows users to upload, like and comment on other peoples images/posts. Images must have captions and users are required to add their Profile after login before uploading posts.All posts will be displayed on the Profile of a user.
+This is an Instagram Clone application where it allows users to upload, like and comment on other peoples posts.All posts will be displayed on the Profile of a user.New user will receive confirmation email after successfull registration.
 **Users must log in with credible emails**
-![InstagramLite](/static/image/profil.png)
+![InstagramLite](/static/image/profile.png)
 
 ## User Stories
 These are the behaviours/features that the application implements for use by a user.
@@ -82,7 +81,7 @@ Admin should:
 * Django  framework and postgresql database
 
 ## Known Bugs
-* User must add profile before uploading an image or viewing profiles
+No bugs at the moment.            
 
 
 ## License

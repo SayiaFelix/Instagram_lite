@@ -159,7 +159,7 @@ def register_user(request):
              login(request,user)
 
              messages.success(request,f'Hello {username}, Your account was Successfully Created!!! You will receive our email shortly.')
-             return redirect('homepage')
+             return redirect('add_profile')
     else:
          form = UserRegisterForm()
     return render (request,'registration/register.html',{'form':form})
