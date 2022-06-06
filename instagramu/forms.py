@@ -27,29 +27,13 @@ class CommentForm(forms.ModelForm):
            'comment' : forms.TextInput(attrs={'class': 'form-control','placeholder':'Add a comment...'}),
         }
 
-class SignupForm(UserCreationForm):
-    email = forms.EmailField(max_length=200, help_text='Required')
-    class Meta:
+class UserRegisterForm(UserCreationForm):
+   email = forms.EmailField()
+
+   class Meta:
         model = User
-        fields = ('username', 'email', 'password1', 'password2')
+        fields = ['username','email','password1','password2']
 
-class UserForm(forms.ModelForm):
-    username = forms.CharField()
-    email = forms.CharField()
-    password1 = forms.CharField()
-    password2 = forms.CharField()
-
-    class Meta:
-        model = User
-        fields = ("username", "email", "password1","password2",)
-
-        # labels={
-
-        #   'username' : '',
-        #   'email' :'',
-        #   'password1' : '',
-        #   'password2' :'',  
-        # }
 
         widgets = {
            'username' : forms.TextInput(attrs={'class': 'form-control','placeholder':'Username'}),
@@ -60,10 +44,4 @@ class UserForm(forms.ModelForm):
         }
 
 
-class UserRegisterForm(UserCreationForm):
-   email = forms.EmailField()
-
-   class Meta:
-        model = User
-        fields = ['username','email','password1','password2']
     
