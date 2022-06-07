@@ -3,7 +3,7 @@
 {{ block.super}}
 {% load bootstrap4 %}
 <hr class="text-dark">
-<div class="container-fluid">
+<div class="container">
       {%if messages%}
         {%for message in messages%}   
                 <div class="alert-{{message.tags}}">
@@ -15,10 +15,9 @@
           {%endfor%}
       {%endif%}
   <div class="row">
-    <div class="col-2">
+    <div class="col-1">
       <br>
-      {% comment %} <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary btn-block mb-4 mx-auto"><i class="fas fa-upload fa-lg"></i> Profile</a> {% endcomment %}
-     
+       
     </div>
     <div class="col-8" style="max-width:43rem; margin-top:10px;">
       {% for image in Images %}
@@ -28,7 +27,7 @@
               <a href="/profile/{{user.id}}" style="color: black; text-decoration: none;">
                         <h5 class="card-title" style="padding-top: 15px; margin-left:13px;">{{image.profile.user}} </h5>
                     </a>
-                    <h4 style="padding-top: 1%; margin-left:71%;">...</h4>
+                 
         </div>
         <img src="{{image.image.url}}" class="card-img-top" data-target="#extraModal{{image.id}}" data-toggle="modal">
         <hr>
@@ -58,21 +57,22 @@
       <br>
       {% endfor %}
     </div>
-    <div class="col-2" style="max-width:20rem; margin-top:1%;margin-left:1%;">
-      <div class="" style="position:fixed; width:300px">
+    <div class="col-2" style="max-width:22rem; margin-top:2%;">
+      <div class="" style="position:fixed; width:290px"> 
           <hr>
           <div style="">
             {% for profile in profile %}
               {% if profile.user == user %}
                <img class="mb-1" src="{{profile.photo.url}}" alt="" style="height:80px;width:70px; border-radius:50%; float:left; margin-right:10px;  box-shadow: 2px 2px 5px rgba(3,3,3,0.5);">
                 <h2 style="font-size:20px; align:center;"> <a href="/profile/{{user.id}}" style="text-decoration:none;">{{profile.user}}</a></h2>
-              <br>
-              <br>
-            
+                 <br>
               {% endif %}
             {% endfor %}
           </div>
-          <div class="all" style="overflow-y:auto; height:400px;margin-top:5px;padding:10px; border-bottom: 1px solid ; width:100%">
+          <br>
+          <br>
+           <a href="{% url 'add_profile' %}" class="btn btn-outline-secondary btn-block mb-4 mx-auto"><i class="fas fa-upload fa-lg"></i> Profile</a> 
+          <div class="all" style="overflow-y:auto; height:400px;margin-top:2px;padding:10px; border-top: 2px solid ; border-bottom: 2px solid; width:100%">
             <p class="text-muted">Suggestions For You</p>
             {% for profile in profile %}
              {% if profile.user != user %}
@@ -86,8 +86,7 @@
              {% endif %}
             <hr>
             {% endfor %}
-        </div>
-      
+        </div>  
       </div>
     </div>
   </div>

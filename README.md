@@ -1,12 +1,12 @@
 # Instagram_Lite
-![InstagramLite](/static/image/pic1.png)
+![InstagramLite](/static/image/picmain.png)
 
 ## Author: [SayiaFelix](https://github.com/sayiaFelix/)
 
 ## Description
-This is an Instagram Clone application where it allows users to upload, like and comment on other peoples posts.All posts will be displayed on the Profile of a user.New user will receive confirmation email after successfull registration.
+This is an Instagram Clone application where it allows users to upload, like and comment on other peoples posts.All posts will be displayed on the Profile of a user.New user will receive confirmation email after successful registration.
 **Users must log in with credible emails**
-![InstagramLite](/static/image/profile.png)
+![InstagramLite](/static/image/prof.png)
 
 ## User Stories
 These are the behaviours/features that the application implements for use by a user.
