@@ -64,7 +64,7 @@
             {% for profile in profile %}
               {% if profile.user == user %}
                <img class="mb-1" src="{{profile.photo.url}}" alt="" style="height:80px;width:70px; border-radius:50%; float:left; margin-right:10px;  box-shadow: 2px 2px 5px rgba(3,3,3,0.5);">
-                <h2 style="font-size:20px; align:center;"> <a href="/profile/{{user.id}}" style="text-decoration:none;">{{profile.user}}</a></h2>
+                <h2 style="font-size:20px; align:center;"> <a href="/profile/{{user.id}}" style="text-decoration:none;">@{{profile.user}}</a></h2>
                  <br>
               {% endif %}
             {% endfor %}
@@ -79,7 +79,7 @@
             <div>
               <img src="{{profile.photo.url}}" alt="" style="height:50px;width:50px; border-radius:50%; border-color: red; float:left; margin-right:15px; box-shadow: 2px 2px 5px rgba(3,3,3,0.5);">
               <a style="text-decoration:none;" href="{% url 'images' pk=profile.pk %}">
-                <h6 style="font-size:16px">{{profile.user}} <br>
+                <h6 style="font-size:16px">@{{profile.user}} <br>
                   <a href="/follow/follow/{{profile.user.id}}/" class="btn  bt-sm">{{follow}}Follow</a>
                   <a href="/follow/unfollow/{{profile.user.id}}/" class="btn btn-sm text-danger">{{unfollow}}Unfollow</a></h6>
             </div>
