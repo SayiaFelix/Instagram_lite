@@ -1,6 +1,5 @@
 from django.contrib import admin
 from django.urls import path,include
-from follows import views as user_views
 from instagramu import views
 
 urlpatterns = [

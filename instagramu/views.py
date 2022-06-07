@@ -158,7 +158,7 @@ def register_user(request):
              user = authenticate(username=username, password=password)
              login(request,user)
 
-             messages.success(request,f'Hello {username}, Your account was Successfully Created!!! You will receive our email shortly.')
+             messages.success(request,f'Hello {username}, Your account was Successfully Created!!!You will receive our email shortly.Thank You!!!')
              return redirect('add_profile')
     else:
          form = UserRegisterForm()
