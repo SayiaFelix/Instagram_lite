@@ -153,12 +153,12 @@ def register_user(request):
              username = form.cleaned_data['username']
              password = form.cleaned_data['password1']
              email = form.cleaned_data['email']
-             send_welcome_email(username,email) 
+             #send_welcome_email(username,email) 
 
              user = authenticate(username=username, password=password)
              login(request,user)
 
-             messages.success(request,f'Hello {username}, Your account was Successfully Created!!!You will receive our email shortly.Thank You!!!')
+             messages.success(request,f'Hello {username}, Your account was Successfully Created.Thank You!!!')
              return redirect('add_profile')
     else:
          form = UserRegisterForm()

@@ -17,7 +17,6 @@
   <div class="row">
     <div class="col-1">
       <br>
-       
     </div>
     <div class="col-8" style="max-width:43rem; margin-top:10px;">
       {% for image in Images %}
@@ -42,11 +41,11 @@
             <label>{{image.likes}} Likes</label>
             {% endif %}
             {% for comment in comments %}
-             {% if image.id == comment.image.id %}
-             <p><b>{{comment.poster}}</b>  {{comment.comment}}</p> 
-             {% endif %}
+              {% if image.id == comment.image.id %}
+              <p><b>{{comment.poster}}</b>  {{comment.comment}}</p> 
+              {% endif %}
             {%endfor%} 
-            <h6 class="text-muted fw-ligh">{{image.posted|timesince}}  Ago</h6>
+            <h6 class="text-muted fw-light">{{image.posted|timesince}}  Ago</h6>
             <form action="{%url 'comment' pk=image.id%}" method="post" enctype="multipart/form-data" id="comment">
               {%csrf_token%}
               {% bootstrap_form form%}
