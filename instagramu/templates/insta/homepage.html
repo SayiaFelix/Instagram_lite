@@ -35,6 +35,7 @@
             <a href="{% url 'like' operation='like' pk=image.id%}"><i class="far fa-heart fa-lg" style="margin-right:10px;color:red;"></i></a>
             <a href="#comment" style="color:black;"><i class="far fa-comment fa-lg"></i></a>
             <a href="/upload"><i class="fas fa-upload fa-lg" style="margin-right:15px;color:black;"></i></a>
+            <img src="https://img.icons8.com/ios/72/bookmark-ribbon--v1.png" style="height:28px; width:40px; float:right;"class="card-img-top">
           </div>
           <div class="like-section">
             {% if image.likes >= 1 %}
